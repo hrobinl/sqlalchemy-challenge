@@ -7,8 +7,6 @@ from sqlalchemy import create_engine, func
 
 from flask import Flask, jsonify
 
-#import datetime as dt
-#from dateutil.relativedelta import relativedelta
 #################################################
 # Database Setup
 #################################################
@@ -63,7 +61,6 @@ def precipitation():
     (latest_date, ) = last_measurement_data_point_tuple
     latest_date = dt.datetime.strptime(latest_date, '%Y-%m-%d')
     latest_date = latest_date.date()
-    date_year_ago = latest_date - relativedelta(years=1)
 
     # Perform a query to retrieve the data and precipitation scores.
     data_from_last_year = session.query(Measurement.date, Measurement.prcp).filter(
